@@ -64,7 +64,7 @@
   var bootstrap = {};
   var did = qs('ph_did');
   var hasOwnId = false;
-  try { hasOwnId = !!localStorage.getItem('ph_phc_mUMN87QABZuPxkyR6LUz8pKqLDJe5eeL9evD7DQYuHBL_posthog'); } catch (e) {}
+  try { hasOwnId = !!localStorage.getItem('ph_' + KEY0 + '_posthog') || document.cookie.indexOf('ph_' + KEY0 + '_posthog=') !== -1; } catch (e) {}
   if (!hasOwnId && did && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(did)) bootstrap.distinctID = did;
 
   posthog.init('phc_mUMN87QABZuPxkyR6LUz8pKqLDJe5eeL9evD7DQYuHBL', {
