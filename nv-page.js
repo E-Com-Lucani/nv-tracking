@@ -79,3 +79,4 @@
   document.addEventListener('touchstart', tag, { capture: true, passive: true });
   document.addEventListener('click', tag, true);
 })();
+window.__nvBuild=window.__nvBuild||{};window.__nvBuild['nv-page']='33599170c17a';
