@@ -68,7 +68,8 @@
   if (!hasOwnId && did && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(did)) bootstrap.distinctID = did;
 
   posthog.init('phc_mUMN87QABZuPxkyR6LUz8pKqLDJe5eeL9evD7DQYuHBL', {
-    api_host: 'https://eu.i.posthog.com',
+    api_host: 'https://e.naturvibes.de',  // PostHog managed reverse proxy on our domain, not on ad-blocker lists (Daniel 2026-11-17)
+    ui_host: 'https://eu.posthog.com',
     defaults: '2026-05-30',
     capture_pageview: false,             // sent below, after the funnel properties are registered
     bootstrap: bootstrap
@@ -185,4 +186,4 @@
     if (tries < 80) setTimeout(function () { waitForPageData(tries + 1); }, 250);
   })(0);
 })();
-window.__nvBuild=window.__nvBuild||{};window.__nvBuild['nv-cc']='1a376717ce5a';
+window.__nvBuild=window.__nvBuild||{};window.__nvBuild['nv-cc']='2c312bd17a4a';

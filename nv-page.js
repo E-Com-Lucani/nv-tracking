@@ -24,7 +24,8 @@
   window.__nvPhPage = true;
   // Own instance "nvph": the page may run its own PostHog (partner sites), which must stay untouched.
   var ph = posthog.init(KEY, {
-    api_host: 'https://eu.i.posthog.com',
+    api_host: 'https://e.naturvibes.de',  // PostHog managed reverse proxy on our domain, not on ad-blocker lists (Daniel 2026-11-17)
+    ui_host: 'https://eu.posthog.com',
     defaults: '2026-05-30',
     bootstrap: bootstrap
   }, 'nvph') || posthog.nvph;
@@ -79,4 +80,4 @@
   document.addEventListener('touchstart', tag, { capture: true, passive: true });
   document.addEventListener('click', tag, true);
 })();
-window.__nvBuild=window.__nvBuild||{};window.__nvBuild['nv-page']='33599170c17a';
+window.__nvBuild=window.__nvBuild||{};window.__nvBuild['nv-page']='fd6a79d71d11';
