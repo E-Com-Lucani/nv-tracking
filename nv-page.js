@@ -30,6 +30,16 @@
     bootstrap: bootstrap
   }, 'nvph') || posthog.nvph;
   function P() { return (window.posthog && window.posthog.nvph) || ph; }  // the library swaps the stub for the real instance
+  // If the page's own PostHog is blocked (ad blocker on posthog.com), its snippet may never load the library, and ours
+  // with it: then load the library ourselves from our proxy. It starts every queued instance, ours included.
+  setTimeout(function () {
+    try {
+      if (P().__loaded || (window.posthog && window.posthog.__loaded)) return;
+      var sc = document.createElement('script');
+      sc.async = true; sc.crossOrigin = 'anonymous'; sc.src = 'https://e.naturvibes.de/static/array.js';
+      document.head.appendChild(sc);
+    } catch (e) {}
+  }, 3000);
   P().register({ theme_layout: 'gempages-hosted', shop_host: location.hostname });
 
   // Links to our other domains carry the visitor id (on click, so links added later count too).
@@ -80,4 +90,4 @@
   document.addEventListener('touchstart', tag, { capture: true, passive: true });
   document.addEventListener('click', tag, true);
 })();
-window.__nvBuild=window.__nvBuild||{};window.__nvBuild['nv-page']='fd6a79d71d11';
+window.__nvBuild=window.__nvBuild||{};window.__nvBuild['nv-page']='9f273756445c';
